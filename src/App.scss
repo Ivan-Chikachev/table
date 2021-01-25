@@ -1,0 +1,174 @@
+//-----Zero-----
+* {
+	box-sizing: border-box;
+}
+ul,
+li {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+}
+input:active,
+input:focus,
+button:active,
+button:focus {
+	outline: none;
+}
+.wrapper {
+	overflow: hidden;
+}
+//------Table------
+table {
+	border-collapse: collapse;
+}
+.table {
+	width: 900px;
+	margin: 10px auto;
+	border: 2px solid rgb(74, 69, 83);
+	tr {
+		th {
+			text-align: left;
+			cursor: pointer;
+		}
+		td,
+		th {
+			text-align: left;
+			width: 180px;
+			padding: 7px 10px;
+		}
+		&:nth-child(even) {
+			background-color: rgb(184, 192, 207);
+		}
+	}
+}
+//--img--
+.loader {
+	width: 40px;
+	position: fixed;
+	right: 20%;
+	top: 5px;
+	margin: 0px 10px;
+}
+.arrow {
+	padding: 0 0 0 7px;
+	width: 20px;
+}
+//----about person-----
+.person-info {
+	border: 1px solid rgb(206, 196, 207);
+	max-width: 500px;
+	margin: 30px auto;
+	.title-about {
+		text-align: center;
+		padding: 5px 0;
+	}
+	li {
+		padding: 3px 7px;
+		&:nth-child(even) {
+			background-color: rgb(231, 192, 192);
+		}
+		&:first-child {
+			background-color: rgb(245, 245, 245);
+		}
+		&:last-child {
+			background-color: rgb(230, 230, 230);
+		}
+		b {
+			width: 200px;
+			display: inline-block;
+		}
+	}
+}
+//---button---
+.buttons {
+	width: 310px;
+	margin: 10px auto;
+}
+.btn-data {
+	cursor: pointer;
+	width: 130px;
+	padding: 10px 22px;
+	border: none;
+	font-weight: 600;
+	border-radius: 5px;
+}
+.small {
+	margin: 10px 25px 0 0;
+	background-color: rgb(164, 164, 224);
+}
+.big {
+	margin: 10px 0 0 22px;
+	background-color: rgb(231, 169, 169);
+}
+//----pagination---
+.pagination {
+	width: 900px;
+	margin: 0 auto;
+
+	border-radius: 4px;
+	ul {
+		display: inline-block;
+		padding: 0;
+		margin: 0;
+	}
+	li {
+		text-align: center;
+		margin: 1px;
+		border: 1px solid rgb(184, 192, 207);
+		cursor: pointer;
+		color: black;
+		float: left;
+		min-width: 43px;
+		padding: 8px 0;
+		border-radius: 5px;
+		&:hover {
+			background-color: rgb(184, 192, 207);
+		}
+	}
+}
+.active {
+	background-color:rgb(231, 192, 192);
+}
+//----Search---
+.search {
+	width: 900px;
+	margin: 5px auto;
+	input {
+		margin: 2px;
+		height: 33px;
+		width: 83%;
+		padding: 5px;
+	}
+	button {
+		margin: 2px 0 2px 2px;
+		background-color: rgb(149, 216, 158);
+		cursor: pointer;
+		width: 140px;
+		padding: 10px 22px;
+		border: none;
+		font-weight: 600;
+		border-radius: 5px;
+	}
+}
+//-----new person-----
+
+.new-person {
+	
+	width: 900px;
+	margin: 10px auto;
+	input {
+		margin: 2px;
+		width: 16.25%;
+		height: 33px;
+		padding: 5px;
+	}
+	button {
+		margin: 2px;
+		width: 140px;
+		padding: 10px 22px;
+		border: none;
+		font-weight: 600;
+		border-radius: 5px;
+		background-color: rgb(149, 216, 158);
+	}
+}
