@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setNewPerson } from '../../redux/newPerson-reducer';
 import { pushPerson } from '../../redux/table-reducer';
 import NewPerson from './NewPerson';
 
@@ -18,9 +17,7 @@ class NewPersonContainer extends React.Component {
 	}
 }
 const mapStateToProps = (state) => ({
-	newCurrentPerson: state.newPerson.newCurrentPerson,
 });
 export default connect(mapStateToProps, {
 	pushPerson,
-	setNewPerson
 })(NewPersonContainer);

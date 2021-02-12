@@ -1,28 +1,34 @@
 import React from 'react';
+import {Field, reduxForm} from "redux-form";
 
 const Search = (props) => {
-     let newText = React.createRef();
-     let add = () => {
-		props.sendSearchText()
+
+     let add = (values) => {
+		props.sendSearchText(values.searchText)
 		props.setCurrentPage(1)
      }
-     let onTextChange = () => {
-        let text = newText.current.value;
-        props.updateText(text);
-      };
+
 	return (
 		<div className='search'>
-			<input
-				ref={newText}
-				value={props.newText}
-				onChange={onTextChange}
-				type='text'
-				placeholder='Поиск..'
-				onKeyPress={'Enter'?add:null}
-			/>
-			<button  onClick={add}>Поиск</button>
+			<SearchReduxForm  onSubmit = {add} add={add}/>
 		</div>
 	);
 };
+const SearchForm = (props) => {
+
+	return(
+		<form onSubmit={props.handleSubmit}>
+			<Field
+				component={'input'}
+				name={'searchText'}
+				type="text"
+				placeholder='Поиск..'
+				onKeyPress={'Enter'?props.add:null}
+			/>
+			<button className="btn">Поиск</button>
+		</form>
+	)
+}
+const SearchReduxForm = reduxForm({form: 'addNewMassage'})(SearchForm)
 
 export default Search;

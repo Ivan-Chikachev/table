@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Search from './Search';
-import { sendSearchText, updateText, setFiltred } from '../../redux/search-reducer';
+import { sendSearchText, setFiltred } from '../../redux/search-reducer';
 import { setCurrentPage } from '../../redux/pagination-reducer';
 
 class SearchContainer extends React.Component {
@@ -19,6 +19,7 @@ class SearchContainer extends React.Component {
 			});
 		};
 		const filtredData = getFiltredData();
+
 		this.props.setFiltred(filtredData);
 
 		return (
@@ -27,21 +28,19 @@ class SearchContainer extends React.Component {
 				searchText={this.props.searchText}
 				newText={this.props.newText}
 				sendSearchText={this.props.sendSearchText}
-				updateText={this.props.updateText}
 			/>
 		);
 	}
 }
 
 const mapStateToProps = (state) => ({
-	newText: state.search.newText,
 	searchText: state.search.searchText,
 	persons: state.tablePage.persons
 });
 
 export default connect(mapStateToProps, {
+
 	sendSearchText,
-	updateText,
 	setFiltred,
 	setCurrentPage
 })(SearchContainer);

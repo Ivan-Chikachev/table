@@ -9,7 +9,10 @@ const Pagination = (props) => {
 		<div className='pagination'>
 			<ul>
 				{pages.map((page) => {
-					return <li className={props.currentPageState === page? 'active' : null}  onClick={()=> {props.currentPage(page)}}>{page}</li>;
+					return 	<li className={props.currentPageState === page? 'active' : null}
+							   	onClick={()=> {props.currentPage(page)}}>
+								{page}
+							</li>;
 				})}
 			</ul>
 		</div>

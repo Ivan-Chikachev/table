@@ -30,4 +30,5 @@ export const setTotalPage = (totalPage) => ({ type: SET_TOTAL_PAGE, totalPage })
 export const setTotalPersonsCount = (total) => ({ type: SET_TOTAL_PERSONS_COUNT, total });
 export const setCurrentPage = (page) => ({ type: SET_CURRENT_PAGE, page });
 export const setCurrentBlock = (block) => ({ type: SET_CURRENT_BLOCK, block });
+
 export default paginationReducer;

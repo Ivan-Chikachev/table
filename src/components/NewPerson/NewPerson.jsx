@@ -1,73 +1,69 @@
 import React from 'react';
+import {Field, reduxForm} from "redux-form";
 
 const NewPerson = (props) => {
-	let textId = React.createRef();
-	let textFN = React.createRef();
-	let textLN = React.createRef();
-	let textEmail = React.createRef();
-	let textPhone = React.createRef();
-	let onTextChange = () => {
-		let text1 = textId.current.value;
-		let text2 = textFN.current.value;
-		let text3 = textLN.current.value;
-		let text4 = textEmail.current.value;
-		let text5 = textPhone.current.value;
-		props.setNewPerson(text1, text2, text3, text4, text5);
-	};
-	console.log(props.person.id);
-	const push = () => {
-		props.pushPerson(props.person);
-		props.setNewPerson('', '', '', '', '');
-	};
-	const addPerson = () => {
-		if (props.person.id === '') {
-			return
-		} else push();
-	};
-	return (
-		<div className='new-person'>
-			<input
-				type='text'
-				ref={textId}
-				value={props.person.id}
-				onChange={onTextChange}
-				type='text'
-				placeholder='Id..'
-			/>
-			<input
-				type='text'
-				ref={textFN}
-				value={props.person.firstName}
-				onChange={onTextChange}
-				type='text'
-				placeholder='Firstname..'
-			/>
-			<input
-				type='text'
-				ref={textLN}
-				value={props.person.lastName}
-				onChange={onTextChange}
-				type='text'
-				placeholder='Lastname..'
-			/>
-			<input
-				type='text'
-				ref={textEmail}
-				value={props.person.email}
-				onChange={onTextChange}
-				type='text'
-				placeholder='E-mail..'
-			/>
-			<input
-				type='text'
-				ref={textPhone}
-				value={props.person.phone}
-				onChange={onTextChange}
-				type='text'
-				placeholder='Phone..'
-			/>
-			<button onClick={addPerson}>Ок</button>
-		</div>
-	);
+    let person
+    const push = (values) => {
+        person = {
+            id: values.id, firstName: values.firstName,
+            lastName: values.lastName, email: values.email,
+            phone: values.phone, address: {city: ''}
+        };
+        props.pushPerson(person);
+        values.id = values.firstName = values.lastName = values.phone = values.email = undefined
+    };
+    const addPerson = (values) => {
+        debugger
+        if (values.id === undefined ||
+            values.firstName === undefined ||
+            values.lastName === undefined) {
+            return
+        } else push(values);
+    };
+    return (
+        <div className='new-person'>
+            <NewPersonReduxForm onSubmit={addPerson}/>
+        </div>
+    );
 };
+
+const NewPersonForm = (props) => {
+    return (
+        <form onSubmit={props.handleSubmit}>
+            <Field
+                component={'input'}
+                name={'id'}
+                type="text"
+                placeholder='Id..'
+            />
+            <Field
+                component={'input'}
+                name={'firstName'}
+                type="text"
+                placeholder='Firstname..'
+            />
+            <Field
+                component={'input'}
+                name={'lastName'}
+                type="text"
+                placeholder='Lastname..'
+            />
+            <Field
+                component={'input'}
+                name={'email'}
+                type="text"
+                placeholder='E-mail..'
+            />
+            <Field
+                component={'input'}
+                name={'phone'}
+                type="text"
+                placeholder='Phone..'
+            />
+
+            <button className="btn">Ок</button>
+        </form>
+    )
+}
+const NewPersonReduxForm = reduxForm({form: 'addNewMassage'})(NewPersonForm)
 export default NewPerson;

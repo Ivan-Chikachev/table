@@ -9,7 +9,7 @@ import SearchContainer from '../Search/SearchContainer';
 const Table = (props) => {
 const arrow = props.directionSort ? <ArrowDown/> : <ArrowUp/>;
 const sortData = (field)=> {
-  props.sortData(field)
+  props.sortingData(field)
   props.setField(field)
 }
   return (
@@ -29,7 +29,7 @@ const sortData = (field)=> {
           <td onClick={()=> {props.setCurrentPerson(u);}}>{u.id}</td>
           <td onClick={()=> {props.setCurrentPerson(u);}}>{u.firstName}</td>
           <td onClick={()=> {props.setCurrentPerson(u);}}>{u.lastName}</td>
-          <td onClick={()=> {props.setCurrentPerson(u);}}>{u.email}</td> 
+          <td onClick={()=> {props.setCurrentPerson(u);}}>{u.email}</td>
           <td onClick={()=> {props.setCurrentPerson(u);}}>{u.phone}</td>
         </tr>
       ))}
