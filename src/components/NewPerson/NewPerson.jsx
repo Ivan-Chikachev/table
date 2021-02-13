@@ -60,7 +60,6 @@ const NewPersonForm = (props) => {
                 type="text"
                 placeholder='Phone..'
             />
-
             <button className="btn">Ок</button>
         </form>
     )

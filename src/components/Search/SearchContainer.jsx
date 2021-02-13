@@ -18,9 +18,7 @@ class SearchContainer extends React.Component {
 				);
 			});
 		};
-		const filtredData = getFiltredData();
-
-		this.props.setFiltred(filtredData);
+		this.props.setFiltred(getFiltredData());
 
 		return (
 			<Search

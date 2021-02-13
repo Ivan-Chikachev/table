@@ -1,34 +1,21 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Pagination from './Pagination';
-import { setTotalPersonsCount,
-    setTotalPage, setCurrentPage,
-    setCurrentBlock } from '../../redux/pagination-reducer';
+import { setTotalPersonsCount, setCurrentPage,
+    setCurrentBlock, addPagination } from '../../redux/pagination-reducer';
 
 class PaginationContainer extends React.Component {
 	componentDidMount() {}
 	render() {
-
-		this.props.setTotalPersonsCount(this.props.filtredData.length);
-		const totalPage = Math.ceil(this.props.filtredData.length / this.props.pageSize);
-		this.props.setTotalPage(totalPage);
-		const currentPage = (page) => {
-            this.props.setCurrentPage(page);
-        };
-        const lastBlockRow = this.props.currentPageState * this.props.pageSize;
-        const firstBlockRow = lastBlockRow - this.props.pageSize;
-        const currentBlock = this.props.filtredData.slice(firstBlockRow, lastBlockRow );
-        this.props.setCurrentBlock(currentBlock);
-
-        //----Redux Thunk?----
+        this.props.addPagination(this.props.filtredData, this.props.pageSize, this.props.currentPageState)
 
         return (
             <>
             {this.props.filtredData.length > this.props.pageSize
                 ?
                 <Pagination
-                    totalPage={totalPage}
-                    currentPage={currentPage}
+                    totalPage={this.props.totalPage}
+                    currentPage={this.props.setCurrentPage}
                     currentPageState={this.props.currentPageState}/>
                 : null}
             </>
@@ -43,7 +30,7 @@ const mapStateToProps = (state) => ({
 });
 export default connect(mapStateToProps, {
 	setTotalPersonsCount,
-	setTotalPage,
     setCurrentPage,
-    setCurrentBlock
+    setCurrentBlock,
+    addPagination
 })(PaginationContainer);

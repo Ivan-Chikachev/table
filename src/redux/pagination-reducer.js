@@ -31,4 +31,15 @@ export const setTotalPersonsCount = (total) => ({ type: SET_TOTAL_PERSONS_COUNT,
 export const setCurrentPage = (page) => ({ type: SET_CURRENT_PAGE, page });
 export const setCurrentBlock = (block) => ({ type: SET_CURRENT_BLOCK, block });
 
+export const addPagination = (filtredData, pageSize, currentPageState) => (dispatch) => {
+	dispatch(setTotalPersonsCount(filtredData.length));
+	const totalPage = Math.ceil(filtredData.length / pageSize);
+	dispatch(setTotalPage(totalPage));
+	const lastBlockRow = currentPageState * pageSize;
+	const firstBlockRow = lastBlockRow - pageSize;
+	const currentBlock = filtredData.slice(firstBlockRow, lastBlockRow );
+	dispatch(setCurrentBlock(currentBlock));
+
+}
+
 export default paginationReducer;
